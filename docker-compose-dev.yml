@@ -1,21 +1,21 @@
 version: "3.9"
 services:
-  chanchito:
+  node_projetc:
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     links:
-      - monguito
+      - mongo_project
     volumes:
       - .:/home/app
-  monguito:
+  mongo_project:
     image: mongo
     ports:
       - "27017:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=nico
+      - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
       - mongo-data:/data/db

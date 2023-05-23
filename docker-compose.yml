@@ -1,22 +1,25 @@
 version: "3.9"
 services:
-  chanchito:
+  node_projetc:
     build: .
     ports:
       - "3000:3000"
     links:
-      - monguito
-  monguito:
+      - mongo_project
+  mongo_project:
     image: mongo
     ports:
       - "27017:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=nico
+      - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
+      #este es el volumen específico del contenedor mongo_project, primero deben estar 
+      #espcificados abajo (en los volumenes generales)
     volumes:
       - mongo-data:/data/db
       # mysql -> /var/lib/mysql
       # postgres -> /var/lib/postgresql/data
 
+      #estos son los volumenes disponibles para todos los contenedores
 volumes:
   mongo-data:
